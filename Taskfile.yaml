@@ -1,0 +1,23 @@
+version: "3"
+
+tasks:
+  foo:
+    desc: Test task
+    silent: true
+    cmds:
+      - 'echo 🚗🚗🚗 ONE={{.ONE}} TWO={{.TWO}}'
+    vars:
+      ONE: '{{.ONE | default "hello"}}'
+      TWO: '{{.TWO | default "world"}}'
+
+  helm:
+    desc: 'Run helm with args inside the container (example: "task helm -- show chart ./foo")'
+    silent: true
+    cmds:
+      - 'helm {{.CLI_ARGS}}'
+
+  kubectl:
+    desc: 'Run kubectl with args inside the container (example: "task kubectl -- version --client")'
+    silent: true
+    cmds:
+      - 'helm {{.CLI_ARGS}}'

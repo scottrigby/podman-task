@@ -1,0 +1,11 @@
+#!/bin/bash
+
+t=$(which task)
+
+task() {
+     if [ -e podman-task ] ; then
+          podman run --rm -i -v $(pwd):/app -w /app $(podman build -q .) "$@"
+     else
+          $t "$@"
+     fi
+}
